@@ -38,7 +38,7 @@ namespace progSep17ArraysChrisFrench0259182
 
             hud();
 
-
+            Console.WriteLine($"You have  encountered an enemy. Enemy health is {enemyHealth}. ");
 
             weaponSelector();
 
@@ -74,7 +74,7 @@ namespace progSep17ArraysChrisFrench0259182
 
         }
         //methods below here
-      
+
             static void shoot(string weaponName)
         {
             int shoot = Array.IndexOf(weaponTypes, weaponName);
@@ -183,6 +183,7 @@ namespace progSep17ArraysChrisFrench0259182
                 Console.WriteLine("You choose to attack your enemy with your trusty Automatic Pistol. " + "\n");
                 shoot("automatic pistol");
                 reloadWeaponClip("automatic pistol");
+                Console.WriteLine($" Enemy has taken damage their health is now {enemyHealth}. ");
             }
 
             else if (weaponSelect == "2")
@@ -190,18 +191,21 @@ namespace progSep17ArraysChrisFrench0259182
                 Console.WriteLine("You choose to attack your enemy with a sleek andd stylish Sniper Rifle. Woot Headshot! " + "\n");
                 shoot("sniper rifle");
                 reloadWeaponClip("sniper rifle");
+                Console.WriteLine($" Enemy has taken damage their health is now {enemyHealth}. ");
             }
             else if (weaponSelect == "3")
             {
                 Console.WriteLine("You choose to attack your enemy with ratt a tatt tattt Machine Gun " + "\n");
                 shoot("machine gun");
                 reloadWeaponClip("machine gun");
+                Console.WriteLine($" Enemy has taken damage their health is now {enemyHealth}. ");
             }
             else if (weaponSelect == "4")
             {
                 Console.WriteLine("You choose to attack your enemy with a FRIKKIN Rocket Launcher... Overkill much? " + "\n");
-                shoot("rocket launche");
-                reloadWeaponClip("rocket launche");
+                shoot("rocket launcher");
+                reloadWeaponClip("rocket launcher");
+                Console.WriteLine($" Enemy has taken damage their health is now {enemyHealth}. ");
 
             }
             else
