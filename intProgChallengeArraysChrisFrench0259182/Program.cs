@@ -40,10 +40,10 @@ namespace progSep17ArraysChrisFrench0259182
             hud();
             Console.ReadKey();
 
-            ammoCount[0] = 14;  //sets inital ammo value pistol carried
-            ammoCount[1] = 6;   //sets inital ammo value sniper rifle carried
-            ammoCount[2] = 50;  //sets inital ammo machine gun  carried
-            ammoCount[3] = 1;   //sets inital ammo rocket launcher  carried 
+            ammoCount[0] = 0;  //sets inital ammo value pistol carried
+            ammoCount[1] = 0;   //sets inital ammo value sniper rifle carried
+            ammoCount[2] = 0;  //sets inital ammo machine gun  carried
+            ammoCount[3] = 0;   //sets inital ammo rocket launcher  carried 
 
             ammoLoad[0] = 14;  //sets inital ammo value pistol
             ammoLoad[1] = 6;   //sets inital ammo value sniper rifle
@@ -272,7 +272,7 @@ namespace progSep17ArraysChrisFrench0259182
                     Console.WriteLine("You did not have room to take that weapon with you it is at home in your footlocker." + "\n");
                     Console.Clear();
                     hud();
-            }
+                }
             }
 
 
