@@ -69,7 +69,9 @@ namespace progSep17ArraysChrisFrench0259182
             EnemyKill();
             newChallenger();
             newChallenger();
+            newChallenger();
 
+            Console.WriteLine($"It has been along day you return to base. ");
 
 
         }
@@ -93,7 +95,6 @@ namespace progSep17ArraysChrisFrench0259182
             ammoCount[1] = ammoCount[1] - fireRate[1];
             ammoCount[2] = ammoCount[2] - fireRate[2];
             ammoCount[3] = ammoCount[3] - fireRate[3];
-
 
         }
 
