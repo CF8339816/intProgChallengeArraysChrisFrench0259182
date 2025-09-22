@@ -24,12 +24,8 @@ namespace progSep17ArraysChrisFrench0259182
         static int[] fireRate = { 2, 1, 5, 1 };
         //  static int weapon = 0;        // Weapon selected
         static int enemyHealth = 100;  // Enemy health
-                                       // static int health = 100;   // Player Health
-                                       // static int mgunDmg = 25;     // Machine gun damage
-                                       // static int pisDmg = 15;   //Pistol damage
-                                       // static int rlDmg = 100;    //Rocket Launcher damage
-                                       // static int snpDmg = 50;    //Sniper Rifle damage
-
+        // static int health = 100;   // Player Health
+                                   
 
 
 
@@ -66,7 +62,7 @@ namespace progSep17ArraysChrisFrench0259182
             Console.WriteLine($"You have encountered an enemy. Enemy health is {enemyHealth}. ");
             Console.ReadKey();
             weaponSelector();
-            EnemyKill();
+            
             newChallenger();
             newChallenger();
             newChallenger();
@@ -77,27 +73,31 @@ namespace progSep17ArraysChrisFrench0259182
         }
         //methods below here
 
-        static void shoot(string weaponName)
+
+        /*trying a simplier way 
+         * 
+         * static void shoot(string weaponName)
         {
             int shoot = Array.IndexOf(weaponTypes, weaponName);
-
-            enemyHealth = enemyHealth - weaponDamage[0];
-            enemyHealth = enemyHealth - weaponDamage[1];
-            enemyHealth = enemyHealth - weaponDamage[2];
-            enemyHealth = enemyHealth - weaponDamage[3];
-
+          
+            enemyHealth -= weaponDamage[0];
+            enemyHealth -= weaponDamage[1];
+            enemyHealth -= weaponDamage[2]; 
+            enemyHealth -= weaponDamage[3];
+            
         }
-        static void ammo(string weaponName)
-        {
-            int ammo = Array.IndexOf(weaponTypes, weaponName);
+        
+         static void ammo(string weaponName)
+         {
+             int ammo = Array.IndexOf(weaponTypes, weaponName);
 
-            ammoCount[0] = ammoCount[0] - fireRate[0];
-            ammoCount[1] = ammoCount[1] - fireRate[1];
-            ammoCount[2] = ammoCount[2] - fireRate[2];
-            ammoCount[3] = ammoCount[3] - fireRate[3];
+             ammoCount[0] = ammoCount[0] - fireRate[0];
+             ammoCount[1] = ammoCount[1] - fireRate[1];
+             ammoCount[2] = ammoCount[2] - fireRate[2];
+             ammoCount[3] = ammoCount[3] - fireRate[3];
 
-        }
-
+         }
+       
         static void clip(string weaponName)   //do damaage  to enemy
         {
             int clip = Array.IndexOf(weaponTypes, weaponName);
@@ -107,17 +107,17 @@ namespace progSep17ArraysChrisFrench0259182
             ammoLoad[2] = ammoLoad[2] - fireRate[2];
             ammoLoad[3] = ammoLoad[3] - fireRate[3];
 
-        }
+        } */
 
-        static void newChallenger()
-        {
-            enemyHealth = 100;
-            Console.WriteLine($"You have encountered another enemy. Enemy health is {enemyHealth}. ");
-            Console.ReadKey();
-            weaponSelector();
-            EnemyKill();
-        }
-
+       static void newChallenger()
+         {
+             enemyHealth = 100;
+             Console.WriteLine($"You have encountered another enemy. Enemy health is {enemyHealth}. ");
+             Console.ReadKey();
+             weaponSelector();
+             EnemyKill();
+         }
+       
         static void EnemyKill()
         {
             bool isEnemyDead = false; // check to see if enemy is dead
@@ -148,115 +148,133 @@ namespace progSep17ArraysChrisFrench0259182
             }
         }
 
-            static void reloadWeaponClip(string weaponName)
+        static void reloadWeaponClip(string weaponName)
+        {
+            int reloadWeaponClip = Array.IndexOf(weaponTypes, weaponName);
+
+            if (ammoLoad[0] == 0)
             {
-                int reloadWeaponClip = Array.IndexOf(weaponTypes, weaponName);
-
-                if (ammoLoad[0] == 0)
-                {
-                    Console.WriteLine("You are empty and cannot fire more press any key to reload. ");
-                    Console.ReadKey();
-                    ammoCount[reloadWeaponClip] += 14;
-                    weaponSelector();
-                }
-
-                else if (ammoLoad[1] == 0)
-                {
-                    Console.WriteLine("You are empty and cannot fire more press any key to reload. ");
-                    Console.ReadKey();
-                    ammoCount[reloadWeaponClip] += 6;
-                    weaponSelector();
-                }
-
-                else if (ammoLoad[2] == 0)
-                {
-                    Console.WriteLine("You are empty and cannot fire more press any key to reload. ");
-                    Console.ReadKey();
-                    ammoCount[reloadWeaponClip] += 50;
-                    weaponSelector();
-                }
-
-
-                else if (ammoLoad[3] == 0)
-                {
-                    Console.WriteLine("You are empty and cannot fire more press any key to reload. ");
-                    Console.ReadKey();
-                    ammoCount[reloadWeaponClip] += 4;
-                    weaponSelector();
-
-                }
-
+                Console.WriteLine("You are empty and cannot fire more press any key to reload. ");
                 Console.ReadKey();
+                ammoLoad[reloadWeaponClip] += 14;
+                ammoCount[reloadWeaponClip] -= 14;
+                weaponSelector();
+            }
 
+            else if (ammoLoad[1] == 0)
+            {
+                Console.WriteLine("You are empty and cannot fire more press any key to reload. ");
+                Console.ReadKey();
+                ammoLoad[reloadWeaponClip] += 6;
+                ammoCount[reloadWeaponClip] -= 6;
+                weaponSelector();
+            }
+
+            else if (ammoLoad[2] == 0)
+            {
+                Console.WriteLine("You are empty and cannot fire more press any key to reload. ");
+                Console.ReadKey();
+                ammoLoad[reloadWeaponClip] += 50;
+                ammoCount[reloadWeaponClip] -= 50;
+                weaponSelector();
             }
 
 
-
-            // method 2
-
-            static void hud()
+            else if (ammoLoad[3] == 0)
             {
-                Console.Write("weapon");
-                Console.Write("{0,23}", "ammo carried");
-                Console.WriteLine("{0,16}", "ammo loaded" + "\n");
-                Console.Write(weaponTypes[0]);
-                Console.Write("{0,7}", ammoCount[0]);
-                Console.WriteLine("{0,15}", ammoLoad[0]);
-                Console.Write(weaponTypes[1]);
-                Console.Write("{0,11}", ammoCount[1]);
-                Console.WriteLine("{0,15}", ammoLoad[1]);
-                Console.Write(weaponTypes[2]);
-                Console.Write("{0,12}", ammoCount[2]);
-                Console.WriteLine("{0,15}", ammoLoad[2]);
-                Console.Write(weaponTypes[3]);
-                Console.Write("{0,8}", ammoCount[3]);
-                Console.WriteLine("{0,16}", ammoLoad[3] + "\n");
+                Console.WriteLine("You are empty and cannot fire more press any key to reload. ");
+                Console.ReadKey();
+                ammoLoad[reloadWeaponClip] += 1;
+                ammoCount[reloadWeaponClip] -= 1;
+                weaponSelector();
+
             }
 
-            //method 3
+            Console.ReadKey();
+
+        }
 
 
-            static void weaponSelector()
+
+        // method 2
+
+        static void hud()
+        {
+            Console.Write("weapon");
+            Console.Write("{0,23}", "ammo carried");
+            Console.WriteLine("{0,16}", "ammo loaded" + "\n");
+            Console.Write(weaponTypes[0]);
+            Console.Write("{0,7}", ammoCount[0]);
+            Console.WriteLine("{0,15}", ammoLoad[0]);
+            Console.Write(weaponTypes[1]);
+            Console.Write("{0,11}", ammoCount[1]);
+            Console.WriteLine("{0,15}", ammoLoad[1]);
+            Console.Write(weaponTypes[2]);
+            Console.Write("{0,12}", ammoCount[2]);
+            Console.WriteLine("{0,15}", ammoLoad[2]);
+            Console.Write(weaponTypes[3]);
+            Console.Write("{0,8}", ammoCount[3]);
+            Console.WriteLine("{0,16}", ammoLoad[3] + "\n");
+        }
+
+        //method 3
+
+        static void weaponSelector()
+        {
+            Console.WriteLine(" Please choose a weapon: 1 = automatic pistol, 2 = sniper rifle, 3 = machine gun, 4 = rocket launcher" + "\n");
+
+            string weaponSelect = Console.ReadLine(); //store  weapon  selection
+
+            if (weaponSelect == "1")
             {
-                Console.WriteLine(" Please choose a weapon: 1 = automatic pistol, 2 = sniper rifle, 3 = machine gun, 4 = rocket launcher" + "\n");
+                Console.WriteLine("You choose to attack your enemy with your trusty Automatic Pistol. " + "\n");
+                enemyHealth = enemyHealth - weaponDamage[0];
 
-                string weaponSelect = Console.ReadLine(); //store  weapon  selection
+                ammoLoad[0] = ammoLoad[0] - fireRate[0];
+                Console.WriteLine($" Enemy has taken damage their health is now {enemyHealth}. ");
+                Console.WriteLine($" you have {ammoLoad[0]} Ammo left. ");
+                // EnemyKill();
+                // reloadWeaponClip("automatic pistol");
+                //  Console.ReadKey();
+            }
 
-                if (weaponSelect == "1")
-                {
-                    Console.WriteLine("You choose to attack your enemy with your trusty Automatic Pistol. " + "\n");
-                    shoot("automatic pistol");
-                    ammo("automatic pistol");
-                    clip("automatic pistol");
-                    Console.WriteLine($" Enemy has taken damage their health is now {enemyHealth}. ");
-                    Console.WriteLine($" you have {ammoLoad[0]} Ammo left. ");
-                    reloadWeaponClip("automatic pistol");
-                    //  Console.ReadKey();
-                }
+            else if (weaponSelect == "2")
+            {
+                Console.WriteLine("You choose to attack your enemy with a sleek andd stylish Sniper Rifle. Woot Headshot! " + "\n");
+                enemyHealth = enemyHealth - weaponDamage[1];
 
-                else if (weaponSelect == "2")
-                {
-                    Console.WriteLine("You choose to attack your enemy with a sleek andd stylish Sniper Rifle. Woot Headshot! " + "\n");
-                    shoot("sniper rifle");
-                    ammo("sniper rifle");
-                    clip("sniper rifle");
-                    Console.WriteLine($" Enemy has taken damage their health is now {enemyHealth}. ");
-                    Console.WriteLine($" you have {ammoLoad[1]} Ammo left. ");
-                    reloadWeaponClip("sniper rifle");
-                    // Console.ReadKey();
-                }
-                else if (weaponSelect == "3")
-                {
-                    Console.WriteLine("You choose to attack your enemy with ratt a tatt tattt Machine Gun " + "\n");
-                    shoot("machine gun");
-                    ammo("machine gun");
-                    clip("machine gun");
-                    Console.WriteLine($" Enemy has taken damage their health is now {enemyHealth}. ");
-                    Console.WriteLine($" you have {ammoLoad[2]} Ammo left. ");
-                    reloadWeaponClip("machine gun");
-                    // Console.ReadKey();
-                }
-                else if (weaponSelect == "4")
+                ammoLoad[1] = ammoLoad[1] - fireRate[1];
+                Console.WriteLine($" Enemy has taken damage their health is now {enemyHealth}. ");
+                Console.WriteLine($" you have {ammoLoad[1]} Ammo left. ");
+                // EnemyKill();
+                // reloadWeaponClip("sniper rifle");
+                // Console.ReadKey();
+            }
+            else if (weaponSelect == "3")
+            {
+                Console.WriteLine("You choose to attack your enemy with ratt a tatt tattt Machine Gun " + "\n");
+                enemyHealth = enemyHealth - weaponDamage[2];
+
+                ammoLoad[2] = ammoLoad[2] - fireRate[2];
+                Console.WriteLine($" Enemy has taken damage their health is now {enemyHealth}. ");
+                Console.WriteLine($" you have {ammoLoad[2]} Ammo left. ");
+                // EnemyKill();
+                // reloadWeaponClip("machine gun");
+                // Console.ReadKey();
+            }
+            else if (weaponSelect == "4")
+            {
+                Console.WriteLine("You choose to attack your enemy with a FRIKKIN Rocket Launcher... Overkill much? " + "\n");
+                enemyHealth = enemyHealth - weaponDamage[3];
+
+                ammoLoad[3] = ammoLoad[3] - fireRate[3];
+                Console.WriteLine($" Enemy has taken damage their health is now {enemyHealth}. ");
+                Console.WriteLine($" you have {ammoLoad[3]} Ammo left. ");
+                //  EnemyKill();
+                //  reloadWeaponClip("rocket launcher");
+                //  Console.ReadKey();
+                /* Old  method not  working when referencing methods for values  keeping code to study
+                 else if (weaponSelect == "4")
                 {
                     Console.WriteLine("You choose to attack your enemy with a FRIKKIN Rocket Launcher... Overkill much? " + "\n");
                     shoot("rocket launcher");
@@ -265,20 +283,22 @@ namespace progSep17ArraysChrisFrench0259182
                     Console.WriteLine($" Enemy has taken damage their health is now {enemyHealth}. ");
                     Console.WriteLine($" you have {ammoLoad[3]} Ammo left. ");
                     reloadWeaponClip("rocket launcher");
-                    //  Console.ReadKey();
-                }
-                else
-                {
-                    Console.WriteLine("You did not have room to take that weapon with you it is at home in your footlocker." + "\n");
-                    Console.Clear();
-                    hud();
-                }
+                    //  Console.ReadKey();*/
             }
-
-
-            //methods above here 
+            else
+            {
+                Console.WriteLine("You did not have room to take that weapon with you it is at home in your footlocker." + "\n");
+                Console.Clear();
+                hud();
+            }
         }
+
+
+
+        //methods above here 
+
     }
+}
 
 
 
