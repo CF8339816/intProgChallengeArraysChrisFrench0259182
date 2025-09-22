@@ -62,7 +62,7 @@ namespace progSep17ArraysChrisFrench0259182
             Console.WriteLine($"You have encountered an enemy. Enemy health is {enemyHealth}. ");
             Console.ReadKey();
             weaponSelector();
-            
+            EnemyKill();
             newChallenger();
             newChallenger();
             newChallenger();
@@ -158,6 +158,8 @@ namespace progSep17ArraysChrisFrench0259182
                 Console.ReadKey();
                 ammoLoad[reloadWeaponClip] += 14;
                 ammoCount[reloadWeaponClip] -= 14;
+                Console.Clear();
+                hud();
                 weaponSelector();
             }
 
@@ -167,6 +169,8 @@ namespace progSep17ArraysChrisFrench0259182
                 Console.ReadKey();
                 ammoLoad[reloadWeaponClip] += 6;
                 ammoCount[reloadWeaponClip] -= 6;
+                Console.Clear();
+                hud();
                 weaponSelector();
             }
 
@@ -176,6 +180,8 @@ namespace progSep17ArraysChrisFrench0259182
                 Console.ReadKey();
                 ammoLoad[reloadWeaponClip] += 50;
                 ammoCount[reloadWeaponClip] -= 50;
+                Console.Clear();
+                hud();
                 weaponSelector();
             }
 
@@ -186,11 +192,18 @@ namespace progSep17ArraysChrisFrench0259182
                 Console.ReadKey();
                 ammoLoad[reloadWeaponClip] += 1;
                 ammoCount[reloadWeaponClip] -= 1;
+                Console.Clear();
+                hud();
                 weaponSelector();
 
             }
+           /* else
+            { 
+                break
+                    }*/
 
-            Console.ReadKey();
+
+                Console.ReadKey();
 
         }
 
@@ -228,13 +241,15 @@ namespace progSep17ArraysChrisFrench0259182
             if (weaponSelect == "1")
             {
                 Console.WriteLine("You choose to attack your enemy with your trusty Automatic Pistol. " + "\n");
+                reloadWeaponClip("automatic pistol");
+
                 enemyHealth = enemyHealth - weaponDamage[0];
 
                 ammoLoad[0] = ammoLoad[0] - fireRate[0];
                 Console.WriteLine($" Enemy has taken damage their health is now {enemyHealth}. ");
                 Console.WriteLine($" you have {ammoLoad[0]} Ammo left. ");
                 // EnemyKill();
-                // reloadWeaponClip("automatic pistol");
+                // 
                 //  Console.ReadKey();
             }
 
